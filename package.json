@@ -10,6 +10,6 @@
   "license": "ISC",
   "repository": "https://staffship-01.ghe.com/first-party-actions-validation/Setup-actions-test.git",
   "publishConfig": {
-    "registry": "https://npm.gowridurgad.github.com/"
+    "registry": "https://npm.pkg.github.com/gowridurgad"
   }
 }
