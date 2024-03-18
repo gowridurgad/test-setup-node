@@ -10,6 +10,6 @@
   "license": "ISC",
   "repository": "https://github.com/gowridurgad/test-setup-node.git",
   "publishConfig": {
-    "registry": "https://github.com/gowridurgad/"
+    "registry": "https://npm.pkg.github.com/"
   }
 }
