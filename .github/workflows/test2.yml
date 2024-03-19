@@ -1,0 +1,21 @@
+name: Setup and Run Flask Server
+
+on:
+  workflow_dispatch:
+
+  # push:
+  #   branches:
+  #     - master  # Run workflow on push to the master branch
+
+jobs:
+  build:
+    runs-on: linux
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"  # Set Python version
