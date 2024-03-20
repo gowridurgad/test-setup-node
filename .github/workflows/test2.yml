@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+       matrix:
+          version: [3.12,3.10,3.7,3.8.10]
 
     steps:
       - name: Checkout code
@@ -18,4 +21,4 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.8.10"  # Set Python version
+          python-version: ${{ matrix.version}} # Set Python version
