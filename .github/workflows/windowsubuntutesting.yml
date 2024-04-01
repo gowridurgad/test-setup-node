@@ -22,6 +22,10 @@ jobs:
       - name: Install the packages
         run: yarn install --frozen-lockfile --ignore-engines
 
+      - name: Build the code
+        run: yarn build:ci
+
+
   tests:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
