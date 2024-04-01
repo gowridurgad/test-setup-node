@@ -3,6 +3,15 @@
   "version": "1.0.2",
   "description": "",
   "main": "index.js",
+  "workspaces": [
+    "packages/codemirror-language-client",
+    "packages/liquid-html-parser",
+    "packages/prettier-plugin-liquid",
+    "packages/theme-check-*",
+    "packages/theme-language-server-*",
+    "packages/vscode-extension",
+    "packages/release-orchestrator"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ci": "yarn workspaces run build:ci"
