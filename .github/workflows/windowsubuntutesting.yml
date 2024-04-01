@@ -19,6 +19,9 @@ jobs:
           cache: "yarn"
           cache-dependency-path: "yarn.lock"
 
+      - name: Install the packages
+        run: yarn install --frozen-lockfile --ignore-engines
+
   tests:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
