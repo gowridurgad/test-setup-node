@@ -1,7 +1,7 @@
-name: ubuntuwindows
+name: ubwintesting
 
 on: 
-  workflow_dispatch:
+   workflow_dispatch:
 
 jobs:
   code-quality:
@@ -56,4 +56,20 @@ jobs:
       - name: Install the packages
         run: yarn install --frozen-lockfile --ignore-engines
 
-      
+      - name: Build the code
+        run: yarn build:ts
+
+      - name: Run the unit tests
+        run: yarn test
+
+      - name: Run the prettier2 unit tests
+        run: yarn --cwd packages/prettier-plugin-liquid test
+
+      - name: Run the prettier2 idempotence tests
+        run: yarn --cwd packages/prettier-plugin-liquid test:idempotence
+
+      - name: Run the prettier3 unit tests
+        run: yarn --cwd packages/prettier-plugin-liquid test:3
+
+      - name: Run the prettier3 idempotence tests
+        run: yarn --cwd packages/prettier-plugin-liquid test:idempotence:3
