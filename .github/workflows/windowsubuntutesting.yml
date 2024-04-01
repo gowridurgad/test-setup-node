@@ -1,4 +1,4 @@
-name: CI
+name: ubuntuwindows
 
 on: 
   workflow_dispatch:
