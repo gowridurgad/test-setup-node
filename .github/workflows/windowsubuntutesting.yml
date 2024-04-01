@@ -5,7 +5,7 @@ on:
 
 jobs:
   code-quality:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     name: Code quality
     steps:
       - uses: actions/checkout@v4
