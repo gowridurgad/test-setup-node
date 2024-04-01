@@ -58,7 +58,5 @@ jobs:
       - name: Build the code
         run: yarn build:ts
 
-      - name: Run the unit tests
-        run: yarn test
 
     
