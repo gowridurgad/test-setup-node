@@ -5,7 +5,7 @@ on:
 
 jobs:
   code-quality:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     name: Code quality
     steps:
       - uses: actions/checkout@v4
@@ -18,3 +18,28 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
           cache-dependency-path: "yarn.lock"
+
+  tests:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        node-version: [18, 20]
+
+    name: Tests / OS ${{ matrix.os }} / NodeJS ${{ matrix.node-version }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+          cache-dependency-path: "yarn.lock"
+
+     
+       
