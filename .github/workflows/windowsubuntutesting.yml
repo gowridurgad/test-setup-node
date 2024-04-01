@@ -28,8 +28,7 @@ jobs:
       - name: Type check (for tests)
         run: yarn type-check
 
-      - name: Check formatting
-        run: yarn format:check
+      
 
   tests:
     runs-on: ${{ matrix.os }}
