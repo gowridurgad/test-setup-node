@@ -23,7 +23,7 @@
     "build:ci": "yarn workspaces run build:ci",
     "build:ts": "yarn workspaces run build:ts",
     "format": "prettier --write \"packages/*/src/**/*.ts\"",
-    "format:check": "prettier --check --ignore-unknown \"gowri.ts"",
+    "format:check": "prettier --check --ignore-unknown \"gowri.ts\"",
     "playground": "yarn --cwd packages/codemirror-language-client run dev:playground",
     "prebuild:ts": "rm -rf packages/*/dist",
     "publish:vsce": "yarn --cwd packages/vscode-extension publish:vsce",
