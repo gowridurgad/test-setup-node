@@ -1,4 +1,4 @@
-name: windowsubantu
+name: ci
 
 on:
    workflow_dispatch:
