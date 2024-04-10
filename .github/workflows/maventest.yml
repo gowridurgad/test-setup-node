@@ -1,0 +1,28 @@
+name: Maven Central Repo Deployment
+on:
+  release:
+    types: [released, prereleased]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Git Repo
+        uses: actions/checkout@v2
+      - name: Set up Maven Central Repo
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 8
+          server-id: sonatype-nexus-staging
+          server-username: 'OSSRH_USER'
+          server-password: 'OSSRH_PASSWORD'
+          gpg-passphrase:  'MAVEN_GPG_PASSPHRASE'
+          gpg-private-key: ${{ secrets.GPG_SECRET }}
+      - name: debug settings.xml
+        run: cat /home/runner/.m2/settings.xml
+      - name: Publish to Maven Central Repo
+        run: mvn clean deploy --batch-mode --activate-profiles deploy
+        env:
+          OSSRH_USER: ${{ secrets.OSSRH_USER }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSWORD }}
