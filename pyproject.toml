@@ -2,7 +2,7 @@
 name = "my-package"
 version = "0.1.0"
 description = "My package description"
-authors = ["gowridurgad@github.com"]
+authors = ["gowridurgad <gowridurga.d@github.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.9,<3.11"
