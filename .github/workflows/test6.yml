@@ -20,7 +20,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.cache/pypoetry
-        key: ${{ runner.os }}-poetry-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}
 
   install-without-extras:
     needs: install-with-extras
@@ -39,4 +39,4 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.cache/pypoetry
-        key: ${{ runner.os }}-poetry-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}
