@@ -19,7 +19,7 @@ jobs:
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
-        path: ~/.cache/pypoetry
+        path: ~/.cache/yarn
         key: ${{ runner.os }}-poetry-${{ hashFiles('**/yarn.lock') }}
 
   install-without-extras:
@@ -38,5 +38,5 @@ jobs:
     - name: Cache dependencies
       uses: actions/cache@v2
       with:
-        path: ~/.cache/pypoetry
+        path: ~/.cache/yarn
         key: ${{ runner.os }}-poetry-${{ hashFiles('**/yarn.lock') }}
