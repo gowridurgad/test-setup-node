@@ -3,8 +3,6 @@ name: Python package
 on:
  workflow_dispatch:
 
-
-
 jobs:
   install-with-extras:
     runs-on: windows_latest
