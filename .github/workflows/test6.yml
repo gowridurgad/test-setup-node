@@ -3,12 +3,11 @@ name: Python package
 on:
  workflow_dispatch:
 
-env:
-  PIP_DISABLE_PIP_VERSION_CHECK: 1
+
 
 jobs:
   install-with-extras:
-    runs-on: macos-14
+    runs-on: windows_latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
