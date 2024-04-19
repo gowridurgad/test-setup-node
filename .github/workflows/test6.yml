@@ -3,6 +3,9 @@ name: Python package
 on:
  workflow_dispatch:
 
+env:
+  PIP_DISABLE_PIP_VERSION_CHECK: 1
+
 jobs:
   install-with-extras:
     runs-on: macos-14
