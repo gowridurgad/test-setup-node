@@ -15,8 +15,10 @@ jobs:
     - name: Upgrade pip
       run: python3.10 -m pip install --upgrade pip
 
-    - name: Check pip version after upgrade
-      run: pip --version
+    - name: Print Python and pip info
+      run: |
+       python --version
+       pip --version
     
     - name: Install dependencies
       run: |
