@@ -5,7 +5,7 @@ on:
 
 jobs:
   install-with-extras:
-    runs-on: windows_latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
