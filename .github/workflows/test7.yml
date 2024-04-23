@@ -7,9 +7,9 @@ jobs:
   install-with-extras:
     runs-on: macos-14
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12' # Changed Python version to latest stable release
     - name: Upgrade pip
@@ -26,9 +26,9 @@ jobs:
     needs: install-with-extras
     runs-on: macos-14
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12' # Changed Python version to latest stable release
     - name: Upgrade pip
