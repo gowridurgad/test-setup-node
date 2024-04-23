@@ -1,25 +1,41 @@
-name: summaryCheck
+name: Summary Check
 
 on:
   workflow_dispatch:
 
 jobs:
-  MacosCheck:
+  UbuntuCheck:
     runs-on: macos-14
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.12' # Changed Python version to latest stable release
-    - name: Install dependencies
-      run: pip install -r requirements.txt # Assuming you have a requirements.txt file with all dependencies
-    - name: Cache dependencies
+        python-version: '3.12'
+    - name: Setup cache
       uses: actions/cache@v2
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+    - name: Install dependencies
+      run: pip install -r requirements.txt
 
+  MacosCheck:
+    needs: UbuntuCheck
+    runs-on: macos-14
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+    - name: Setup cache
+      uses: actions/cache@v2
+      with:
+        path: ~/Library/Caches/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+    - name: Install dependencies
+      run: pip install -r requirements.txt
   
   
 
