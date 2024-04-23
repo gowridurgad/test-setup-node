@@ -4,7 +4,7 @@ on:
  workflow_dispatch:
 
 jobs:
-  install-with-extras:
+  UbuntuCheck:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -22,8 +22,8 @@ jobs:
         path: ~/.cache/pypoetry
         key: ${{ runner.os }}-poetry-${{ hashFiles('**/pyproject.toml') }}
 
-  install-without-extras:
-    needs: install-with-extras
+  MacosCheck:
+    needs: UbuntuCheck
     runs-on: macos-14
     steps:
     - uses: actions/checkout@v2
