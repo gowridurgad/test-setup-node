@@ -1,7 +1,6 @@
 name: Pytest with Codecov
 
-on: 
-    workflow_dispatch
+on: [push]
 
 jobs:
   build:
@@ -21,6 +20,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install pip
-      run: curl https://bootstrap.pypa.io/get-pip.py | python
+      run: python -m pip install -q --upgrade pip
     - name: Install dependencies
       run: pip install -e .[testing]
