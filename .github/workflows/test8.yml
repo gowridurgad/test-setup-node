@@ -6,7 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ctornau/latex
     strategy:
       max-parallel: 5
       fail-fast: false
