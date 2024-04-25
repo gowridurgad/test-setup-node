@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: python:3.12-buster
+    container: python:3.10-buster
     strategy:
       max-parallel: 5
       fail-fast: false
