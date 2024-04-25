@@ -18,9 +18,9 @@ jobs:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
     - name: Upgrade pip
-      run: python3.10 -m pip install --upgrade pip --disable-pip-version-check
+      run: python3.10 -m pip install --upgrade pip --no-warn-script-location
     - name: Install dependencies
-      run: pip install -r requirements.txt --disable-pip-version-check
+      run: pip install -r requirements.txt 
 
   MacosCheck:
     needs: UbuntuCheck
@@ -37,6 +37,6 @@ jobs:
         path: ~/Library/Caches/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
     - name: Upgrade pip
-      run: python3.10 -m pip install --upgrade pip --disable-pip-version-check
+      run: python3.10 -m pip install --upgrade pip --no-warn-script-location
     - name: Install dependencies
-      run: pip install -r requirements.txt --disable-pip-version-check
+      run: pip install -r requirements.txt 
