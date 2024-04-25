@@ -6,6 +6,8 @@ on:
 jobs:
   UbuntuCheck:
     runs-on: macos-14
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: 1
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -18,15 +20,15 @@ jobs:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
     - name: Upgrade pip
-      run: |
-        export PIP_DISABLE_PIP_VERSION_CHECK=1
-        python3.10 -m pip install --upgrade pip --no-warn-script-location
+      run: python3.10 -m pip install --upgrade pip --no-warn-script-location
     - name: Install dependencies
       run: pip install -r requirements.txt 
 
   MacosCheck:
     needs: UbuntuCheck
     runs-on: macos-14
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: 1
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -39,8 +41,6 @@ jobs:
         path: ~/Library/Caches/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
     - name: Upgrade pip
-      run: |
-        export PIP_DISABLE_PIP_VERSION_CHECK=1
-        python3.10 -m pip install --upgrade pip --no-warn-script-location
+      run: python3.10 -m pip install --upgrade pip --no-warn-script-location
     - name: Install dependencies
       run: pip install -r requirements.txt
