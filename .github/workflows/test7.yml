@@ -6,8 +6,7 @@ on:
 jobs:
   UbuntuCheck:
     runs-on: macos-14
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -27,8 +26,6 @@ jobs:
   MacosCheck:
     needs: UbuntuCheck
     runs-on: macos-14
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 1
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
