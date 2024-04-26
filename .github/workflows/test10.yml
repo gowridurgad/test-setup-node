@@ -1,63 +1,85 @@
 name: CI
 on:
-  workflow_dispatch:
+    workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-
-  lint:
-    name: Lint
+  verify_files:
+    name: Verify Files
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          fetch-depth: 1
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-      - run: npm install
-      - run: npm run -s lint
-      - run: npm run -s test:types
-
-  test:
-    name: Test
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        eslint: [8.x, "9.x"]
-        node: [18.x, 20.x]
-        include:
-          - os: ubuntu-latest
-            node: "18.18.0"
-            eslint: "8.x"
-          - os: ubuntu-latest
-            node: "20.9.0"
-            eslint: "8.x"
-          - os: ubuntu-latest
-            node: "21.1.0"
-            eslint: "8.x"
-          - os: ubuntu-latest
-            node: "21.x"
-            eslint: "8.x"
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: Install Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-      - name: npm latest
-        run: npm i -g npm@latest # use latest npm
+          node-version: "lts/*"
       - name: Install Packages
         run: npm install
-      - name: Install ESLint ${{ matrix.eslint }}
-        run: npm install --no-save --force eslint@${{ matrix.eslint }}
+
+      - name: Install Docs Packages
+        working-directory: docs
+        run: npm install
+
+      - name: Lint Files
+        run: node Makefile lint
+
+      - name: Check Rule Files
+        run: node Makefile checkRuleFiles
+
+      - name: Check Licenses
+        run: node Makefile checkLicenses
+
+      - name: Lint Docs JS Files
+        run: node Makefile lintDocsJS
+
+      - name: Check Rule Examples
+        run: node Makefile checkRuleExamples
+
+      - name: Lint Files, Dependencies, & Exports
+        run: npm run lint:unused
+
+  test_on_node:
+    name: Test
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [21.x, 20.x, 18.x, "18.18.0"]
+        include:
+          - os: windows-latest
+            node: "lts/*"
+          - os: macOS-latest
+            node: "lts/*"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install Packages
+        run: npm install
       - name: Test
-        run: npm run -s test:tests
+        run: node Makefile mocha
+      - name: Fuzz Test
+        run: node Makefile fuzz
+
+  test_on_browser:
+    name: Browser Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Should be the same as the version used on Netlify to build the ESLint Playground
+      - name: Install Packages
+        run: npm install
+      - name: Test
+        run: node Makefile wdio
+      - name: Fuzz Test
+        run: node Makefile fuzz
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: logs
+          path: |
+            wdio-logs/*.log
