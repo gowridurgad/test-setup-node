@@ -5,7 +5,7 @@ on:
 
 jobs:
   UbuntuCheck:
-    runs-on: macos-14
+    runs-on: macos-13
 
     steps:
     - uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
 
   MacosCheck:
     needs: UbuntuCheck
-    runs-on: macos-14
+    runs-on: macos-13
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
