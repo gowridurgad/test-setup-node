@@ -1,6 +1,11 @@
-name: CI123
+name: CI
 on:
- workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  schedule:
+    - cron: 0 0 * * 0
 
 jobs:
 
@@ -18,4 +23,46 @@ jobs:
         with:
           node-version: 20.x
       - run: npm install
+  
+
+  test:
+    name: Test
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        eslint: [8.x, "9.x"]
+        node: [18.x, 20.x]
+        include:
+          - os: ubuntu-latest
+            node: "18.18.0"
+            eslint: "8.x"
+          - os: ubuntu-latest
+            node: "20.9.0"
+            eslint: "8.x"
+          - os: ubuntu-latest
+            node: "21.1.0"
+            eslint: "8.x"
+          - os: ubuntu-latest
+            node: "21.x"
+            eslint: "8.x"
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Install Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: npm latest
+        run: npm i -g npm@latest # use latest npm
+      - name: Install Packages
+        run: npm install
+      - name: Install ESLint ${{ matrix.eslint }}
+        run: npm install --no-save --force eslint@${{ matrix.eslint }}
+      - name: Test
+        run: npm run -s test:tests
    
