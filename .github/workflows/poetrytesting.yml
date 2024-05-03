@@ -1,3 +1,12 @@
+name: Setup and Run Flask Server
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
 steps:
 - uses: actions/checkout@v4
 - name: Install poetry
