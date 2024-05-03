@@ -1,4 +1,4 @@
-name: Setup and Run Flask Server
+name: poetryTest
 
 on:
   workflow_dispatch:
@@ -6,14 +6,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-steps:
-- uses: actions/checkout@v4
-- name: Install poetry
-  run: pipx install poetry
-- uses: actions/setup-python@v5
-  with:
-    python-version: '3.9'
-    cache: 'poetry'
-- run: poetry install
-- run: poetry run pytest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install poetry
+      run: pipx install poetry
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+        cache: 'poetry'
+    - run: poetry install
+    - run: poetry run pytest
