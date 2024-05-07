@@ -14,7 +14,7 @@ jobs:
       id: setup-python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10.9'
+        python-version: '3.12'
         cache: 'poetry'
     - name: Set Poetry Python version
       run: poetry env use ${{ steps.setup-python.outputs.python-path }}python
