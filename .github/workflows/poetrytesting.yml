@@ -10,9 +10,13 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install poetry
       run: pipx install poetry
-    - uses: actions/setup-python@v5
+    - name: Set up Python
+      id: setup-python
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10.9'
         cache: 'poetry'
+    - name: Set Poetry Python version
+      run: poetry env use ${{ steps.setup-python.outputs.python-path }}python
     - run: poetry install
     
