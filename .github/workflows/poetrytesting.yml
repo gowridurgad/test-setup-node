@@ -14,7 +14,6 @@ jobs:
       with:
         python-version: '3.12'
         cache: 'poetry'
-    - name: Install poetry
-      run: pipx install poetry
+ 
    
     
