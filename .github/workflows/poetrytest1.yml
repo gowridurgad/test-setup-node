@@ -1,4 +1,4 @@
-name: Python application
+name: poetryTest
 
 on:
   workflow_dispatch:
@@ -8,25 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: 3.10.9
-
-    - name: Install Poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
-
-    - name: Configure Poetry
-      run: |
-        poetry config virtualenvs.create true
-        poetry config virtualenvs.in-project true
-
+       python-version: '3.10.9'
+    - run: |
+       python -m pip install poetry
+    - name: Check Poetry Python version
+      run: poetry env info
+    - name: Setup Poetry cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry
+        key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-poetry-
     - name: Install dependencies
-      run: |
-        poetry install
-
+      run: poetry install
     - name: Lock dependencies
       run: |
         poetry lock --no-update
