@@ -13,7 +13,7 @@ jobs:
       with:
        python-version: '3.10.9'
     - run: |
-       python -m pipx install poetry
+       python -m pip install poetry
     - name: Check Poetry Python version
       run: poetry env info
     - name: Setup Poetry cache
