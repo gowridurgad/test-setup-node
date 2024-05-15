@@ -5,7 +5,7 @@ description = "My package description"
 authors = ["gowridurgad <gowridurga.d@github.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.10.9,<3.11"
+python = ">=3.9,<3.11"
 numpy = "^1.22.3"
 boto3 = "^1.24.59"
 pydantic = {version = "<2.0", extras = ["dotenv"]}
