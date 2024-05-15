@@ -21,6 +21,8 @@ jobs:
        restore-keys: |
          ${{ runner.os }}-poetry-
     - run: poetry install
+    - name: Check Poetry Python version
+      run: poetry env info
 
 
 
