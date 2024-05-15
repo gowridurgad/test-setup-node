@@ -5,5 +5,7 @@ description = "My package description"
 authors = ["gowridurgad <gowridurga.d@github.com>"]
 
 [tool.poetry.dependencies]
+python = "^3.8"
 requests = "^2.25.1"
+
 
