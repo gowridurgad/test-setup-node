@@ -14,6 +14,8 @@ jobs:
       with:
         python-version: '3.7'
         cache: 'poetry'
+    - name: Set Poetry Python interpreter to Actions Python version
+      run: poetry env use ${{ steps.setup-python.outputs.python-path }}python
     - run: poetry install
     - name: Check Poetry Python version
       run: poetry env info
