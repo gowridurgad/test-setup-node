@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Install poetry
+      run: curl -sSL https://install.python-poetry.org | python3 -
     - uses: actions/setup-python@v5
       with:
         python-version: '3.9'
         cache: 'poetry'
-    - name: Install poetry
-      run: curl -sSL https://install.python-poetry.org | python3 -
     - run: poetry install
     
