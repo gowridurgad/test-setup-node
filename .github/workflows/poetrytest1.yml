@@ -7,11 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.9'
         cache: 'poetry'
-    - uses: snok/install-poetry@v1
+    - name: Install poetry
+      run: curl -sSL https://install.python-poetry.org | python3 -
+    - run: poetry install
     
