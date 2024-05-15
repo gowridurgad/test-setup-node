@@ -8,4 +8,4 @@ authors = ["gowridurgad <gowridurga.d@github.com>"]
 numpy = "^1.22.3"
 boto3 = "^1.24.59"
 pydantic = {version = "<2.0", extras = ["dotenv"]}
-jinja2 = "^3.1.2"
+
