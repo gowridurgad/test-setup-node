@@ -17,6 +17,8 @@ jobs:
        python -m pipx ensurepath
        python -m pipx install poetry
     - run: poetry install
+    - name: Check Poetry Python version
+      run: poetry env info
 
 
 
