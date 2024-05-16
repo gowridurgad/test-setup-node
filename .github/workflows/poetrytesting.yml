@@ -13,8 +13,7 @@ jobs:
         python-version: '3.9'
     - name: Install poetry
       run: |
-       python -m pipx ensurepath
-       python -m pipx install poetry
+       python -m pip install poetry
     - run: poetry install
     - name: Check Poetry Python version
       run: poetry env info
