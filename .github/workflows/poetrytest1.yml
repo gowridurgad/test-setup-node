@@ -8,15 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Install poetry
-      run: curl -sSL https://install.python-poetry.org | python3 -
-    - name: Check Poetry Python version
-      run: poetry env info
     - uses: actions/setup-python@v5
       with:
-        python-version: '3.7'
-        cache: 'poetry'
-    - run: poetry install
+        python-version: '3.9'
+        cache: 'pipenv'
+    - name: Install pipenv
+      run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+    - run: pipenv install
     - name: Check Poetry Python version
-      run: poetry env info
+      run: pipenv env info
     
