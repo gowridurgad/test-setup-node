@@ -1,3 +1,5 @@
+name: issue1025
+
 on:
   workflow_dispatch:
 
