@@ -16,8 +16,6 @@ jobs:
        curl -sSL https://install.python-poetry.org | python -
     - name: Check Poetry Python version
       run: poetry env info
-    - name: Set up Poetry environment
-      run: poetry env use 3.11
     - name: Cache Poetry dependencies
       uses: actions/cache@v3
       with:
