@@ -16,8 +16,8 @@ jobs:
         python-version: '3.x'
         cache: 'pip' 
 
-    - name: Create pip cache directory
-      run: mkdir -p /home/runner/.cache/pip
+    - name: Upgrade pip
+      run: python -m pip install --upgrade pip
 
     - name: Display Python version
       run: python --version
