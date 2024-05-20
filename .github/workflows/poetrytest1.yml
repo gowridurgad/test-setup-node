@@ -12,8 +12,7 @@ jobs:
       with:
         python-version: '3.11'
     - name: Install Poetry
-      run: |
-       curl -sSL https://install.python-poetry.org | python -
+      run: python -m pip install poetry
     - name: Check Poetry Python version
       run: poetry env info
     - name: Cache Poetry dependencies
