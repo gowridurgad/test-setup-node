@@ -17,7 +17,7 @@ jobs:
     - name: Check Poetry Python version
       run: poetry env info
     - name: Set up Poetry environment
-      run: poetry env use python
+      run: poetry env use 3.10
     - name: Cache Poetry dependencies
       uses: actions/cache@v3
       with:
