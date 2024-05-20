@@ -10,4 +10,4 @@ jobs:
         with:
           cache: "pip"
           python-version: "3.x"
-      - run: python3 src/main.py
+      
