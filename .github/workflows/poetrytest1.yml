@@ -16,4 +16,4 @@ jobs:
         cache: poetry
     - run: pipx install poetry==1.8.3
     - run: poetry install
-      working-directory: app
+     
