@@ -4,7 +4,8 @@ on:
 
 jobs:
   python-program:
-    runs-on: self-hosted
+    runs-on: windows_latest
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
