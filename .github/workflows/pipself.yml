@@ -14,7 +14,7 @@ jobs:
     - name: Set up Python
       run: |
         PYTHON_VERSION=3.9.5
-        RUNNER_TOOL_CACHE=/home/azureuser/actions-runner/_work/_tool
+        RUNNER_TOOL_CACHE=/home/azureuser/actions-runner/_work/_temp
         mkdir -p ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
         curl -O https://www.python.org/ftp/python/3.9.5/Python-3.9.5.tgz
         tar -xzf Python-${PYTHON_VERSION}.tgz --directory ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
