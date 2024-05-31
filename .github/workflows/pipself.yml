@@ -23,4 +23,4 @@ jobs:
 
     - name: Verify Python Installation
       run: |
-        python --version
+        python3 --version
