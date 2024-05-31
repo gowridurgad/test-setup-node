@@ -1,29 +1,27 @@
-name: Python Setup and Pip Test
+name: isssue
 
-on:
-  workflow_dispatch:
+on: 
+   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: self-hosted
-  
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-    - name: Check out repository
+    - name: Checkout code
       uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-        cache: 'pip' 
-
-    - name: Display Python version
-      run: python --version
-
-    - name: Check pip
       run: |
-        which pip
-        pip --version
+        PYTHON_VERSION= '3.12'
+        RUNNER_TOOL_CACHE=$(Agent.ToolsDirectory) # this is set by the runner
+        mkdir -p ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
+        curl -O https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
+        tar -xzf Python-${PYTHON_VERSION}.tgz --directory ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
+        touch ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64.complete
+        rm -f Python-${PYTHON_VERSION}.tgz
+        echo "${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64/bin" >> $GITHUB_PATH 
 
-    - name: Print RUNNER_TOOL_CACHE
-      run: echo $RUNNER_TOOL_CACHE
+    - name: Verify Python Installation
+      run: |
+        python --version
