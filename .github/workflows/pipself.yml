@@ -14,7 +14,7 @@ jobs:
     - name: Set up Python
       run: |
         PYTHON_VERSION=3.12
-        RUNNER_TOOL_CACHE=$(Agent.ToolsDirectory) # this is set by the runner
+        RUNNER_TOOL_CACHE=/home/azureuser/actions-runner/_work/_tool
         mkdir -p ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
         curl -O https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
         tar -xzf Python-${PYTHON_VERSION}.tgz --directory ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
