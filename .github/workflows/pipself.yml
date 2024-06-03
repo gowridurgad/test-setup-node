@@ -13,7 +13,7 @@ jobs:
 
     - name: Set up Python
       run: |
-        PYTHON_VERSION=3.9.5
+        PYTHON_VERSION=3.8.0
         RUNNER_TOOL_CACHE=/home/azureuser/actions-runner/_work/_temp
         mkdir -p ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
         cp /Users/gowri/Downloads/Python-3.8.0.tgz . 
