@@ -16,7 +16,7 @@ jobs:
         PYTHON_VERSION=3.8.0
         RUNNER_TOOL_CACHE=/home/runner/actions-runner/_work/_temp
         mkdir -p ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
-        cp /Users/gowri/Downloads/Python-3.8.0.tgz . 
+        cp /Users/gowri/Downloads/Python-3.8.0.tar
         tar -xzf Python-${PYTHON_VERSION}.tgz --directory ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
         touch ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64.complete
         rm -f Python-${PYTHON_VERSION}.tgz
