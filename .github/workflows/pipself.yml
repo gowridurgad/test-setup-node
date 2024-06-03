@@ -1,7 +1,7 @@
-name: isssue
+name: issue
 
 on: 
-   workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,11 +16,10 @@ jobs:
         PYTHON_VERSION=3.9.5
         RUNNER_TOOL_CACHE=/home/azureuser/actions-runner/_work/_temp
         mkdir -p ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
-        curl -O https://www.python.org/ftp/python/3.9.5/Python-3.9.5.tgz
+        cp /Users/gowri/Downloads/Python-3.8.0.tgz . 
         tar -xzf Python-${PYTHON_VERSION}.tgz --directory ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64
         touch ${RUNNER_TOOL_CACHE}/Python/${PYTHON_VERSION}/x64.complete
         rm -f Python-${PYTHON_VERSION}.tgz
-
     - name: Cache pip packages
       uses: actions/cache@v2
       with:
@@ -28,7 +27,6 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-
     - name: Verify Python Installation
       run: |
         python3 --version
