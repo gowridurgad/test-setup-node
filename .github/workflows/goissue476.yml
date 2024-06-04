@@ -1,0 +1,14 @@
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go }}
+
+      # darwin
+      - name: 'Test on [darwin] arch [amd64]'
+        if: ${{ matrix.os == 'darwin' && contains(fromJson('["amd64"]'), matrix.arch) }}
+        env:
+          GOOS: ${{ matrix.os }}
+          GOARCH: ${{ matrix.arch }}
+        run: |
+          echo ${CGO_ENABLED}   //print empty
+          go env CGO_ENABLED //print 0 - should be 1
