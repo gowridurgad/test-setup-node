@@ -6,6 +6,8 @@ on:
 jobs:
   macosCheck:
     runs-on: windows-latest
+    env:
+      CGO_ENABLED: 1
     
     strategy:
       matrix:
