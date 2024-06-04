@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  UbuntuCheck:
-    runs-on: macos-latest
+  macosCheck:
+  runs-on: macos-latest
     
     strategy:
       matrix:
@@ -28,3 +28,4 @@ jobs:
       run: |
           echo ${CGO_ENABLED}   //print empty
           go env CGO_ENABLED //print 0 - should be 1
+          go test -v -race -coverprofile="coverage.txt" -covermode=atomic ./...
