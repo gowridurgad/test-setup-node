@@ -6,7 +6,10 @@ on:
 jobs:
   UbuntuCheck:
     runs-on: macos-latest
-
+    
+    strategy:
+      matrix:
+        go: ['1.18', '1.19'] 
     steps:
     - uses: actions/checkout@v4
     - name: Set up Go
