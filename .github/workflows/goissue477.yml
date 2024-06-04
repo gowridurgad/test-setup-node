@@ -28,4 +28,4 @@ jobs:
       run: |
           echo ${CGO_ENABLED}   //print empty
           go env CGO_ENABLED //print 0 - should be 1
-          go test -v -race -coverprofile="coverage.txt" -covermode=atomic ./...
+         
