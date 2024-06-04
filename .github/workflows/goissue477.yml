@@ -5,7 +5,7 @@ on:
 
 jobs:
   macosCheck:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     
     strategy:
       matrix:
