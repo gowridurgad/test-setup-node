@@ -28,7 +28,7 @@ jobs:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
       run: |
-          echo ${CGO_ENABLED}   //print empty
-          go env CGO_ENABLED //print 0 - should be 1
+          echo ${CGO_ENABLED}   
+          go env CGO_ENABLED 
           
          
