@@ -10,7 +10,7 @@ jobs:
     
     strategy:
       matrix:
-        go: ['1.18'] 
+        go: ['1.20'] 
         os: ['darwin']
         arch: ['amd64']
     steps:
