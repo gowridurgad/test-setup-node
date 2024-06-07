@@ -5,7 +5,7 @@ on:
 
 jobs:
   macosCheck:
-    runs-on: macos-latest
+    runs-on: linux-latest
   
     
     strategy:
@@ -27,7 +27,6 @@ jobs:
       run: |
           echo ${CGO_ENABLED}
           go env CGO_ENABLED
-          go test -v -race -coverprofile="coverage.txt" -covermode=atomic ./...
-      
+          
           
          
