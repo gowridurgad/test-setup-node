@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         go: ['1.18'] 
-        os: ['linux']
+        os: ['windows']
         arch: ['amd64']
     steps:
     - uses: actions/checkout@v4
@@ -19,8 +19,8 @@ jobs:
       uses: actions/setup-go@v5
       with:
           go-version: ${{ matrix.go }}
-    - name: 'Test on [linux] arch [amd64]'
-      if: ${{ matrix.os == 'linux' && contains(fromJson('["amd64"]'), matrix.arch) }}
+    - name: 'Test on [windows] arch [amd64]'
+      if: ${{ matrix.os == 'windows' && contains(fromJson('["amd64"]'), matrix.arch) }}
       env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
