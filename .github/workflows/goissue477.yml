@@ -5,7 +5,7 @@ on:
 
 jobs:
   macosCheck:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
   
     
     strategy:
