@@ -5,13 +5,13 @@ on:
 
 jobs:
   macosCheck:
-    runs-on: windows-latest
+    runs-on: macos-latest
   
     
     strategy:
       matrix:
         go: ['1.18'] 
-        os: ['windows']
+        os: ['macos']
         arch: ['amd64']
     steps:
     - uses: actions/checkout@v4
@@ -19,8 +19,8 @@ jobs:
       uses: actions/setup-go@v5
       with:
           go-version: ${{ matrix.go }}
-    - name: 'Test on [windows] arch [amd64]'
-      if: ${{ matrix.os == 'windows' && contains(fromJson('["amd64"]'), matrix.arch) }}
+    - name: 'Test on [macos] arch [amd64]'
+      if: ${{ matrix.os == 'macos' && contains(fromJson('["amd64"]'), matrix.arch) }}
       env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
