@@ -5,12 +5,11 @@ on:
 
 jobs:
   macosCheck:
-    runs-on: macos-latest
-  
+    runs-on: macOS-latest
     
     strategy:
       matrix:
-        go: ['1.20'] 
+        go: ['1.18'] 
         os: ['macos']
         arch: ['amd64']
     steps:
@@ -25,8 +24,8 @@ jobs:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
       run: |
-          echo ${CGO_ENABLED}
+          echo "CGO_ENABLED: ${CGO_ENABLED}"
+          echo "GOOS: ${GOOS}"
+          echo "GOARCH: ${GOARCH}"
           go env CGO_ENABLED
-          
-          
-         
+          go env
