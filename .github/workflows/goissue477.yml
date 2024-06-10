@@ -23,9 +23,8 @@ jobs:
       env:
           GOOS: ${{ matrix.os }}
           GOARCH: ${{ matrix.arch }}
+          CGO_ENABLED: 1
       run: |
           echo "CGO_ENABLED: ${CGO_ENABLED}"
-          echo "GOOS: ${GOOS}"
-          echo "GOARCH: ${GOARCH}"
           go env CGO_ENABLED
           go env
