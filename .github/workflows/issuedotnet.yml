@@ -16,14 +16,6 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-
-    - name: Pack
-      run: dotnet pack --configuration Release --no-build --output ./nupkg
 
     - name: Publish to NuGet
       env:
