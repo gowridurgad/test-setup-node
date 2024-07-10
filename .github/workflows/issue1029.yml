@@ -3,10 +3,8 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: Install Yarn
-        run: npm install -g yarn
       - uses: actions/setup-node@v4
         with:
           node-version: 20
