@@ -1,0 +1,13 @@
+name: issue1029
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Install Yarn
+        run: npm install -g yarn
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
