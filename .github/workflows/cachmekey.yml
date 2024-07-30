@@ -1,0 +1,19 @@
+name: cachekey
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+   
+       - name: Install Poetry
+         run: curl -sSL https://install.python-poetry.org | python3 -
+       - name: Add Poetry to PATH
+         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+       
+       - uses: actions/checkout@v4
+       - uses: Zxilly/setup-python@main
+         with:
+            python-version: '3.8'
+            cache: 'poetry'
+            cache-dependency-path : Poetry.lock
