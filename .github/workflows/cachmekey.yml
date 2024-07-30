@@ -1,19 +1,18 @@
-name: cachekey
+name: cacheinvalid
 on:
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+    - name: Install poetry
+      run: pipx install poetry
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+        cache: 'poetry'
+    - run: poetry install
+    - name: Check Poetry Python version
+      run: poetry env info
    
-       - name: Install Poetry
-         run: curl -sSL https://install.python-poetry.org | python3 -
-       - name: Add Poetry to PATH
-         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-       
-       - uses: actions/checkout@v4
-       - uses: Zxilly/setup-python@main
-         with:
-            python-version: '3.8'
-            cache: 'poetry'
-            cache-dependency-path : Poetry.lock
