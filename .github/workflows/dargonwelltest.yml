@@ -1,10 +1,10 @@
-name: Test Java Versions
+name:  dragonwell Versions
 
 on: 
  workflow_dispatch:
 
 jobs:
-  test-java-versions:
+  test-dragonwell-versions:
     runs-on: ubuntu-latest
 
     strategy:
