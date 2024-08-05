@@ -1,0 +1,23 @@
+name: Test Java Versions
+
+on: 
+ workflow_dispatch:
+
+jobs:
+  test-java-versions:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java-version: [11, 17, 21]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Java
+      uses: actions/setup-java@main
+      with:
+        distribution: 'dragonwell'
+        java-version: ${{ matrix.java-version }}
+    
