@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup Java
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@99b8673ff64fbf99d8d325f52d9a5bdedb8483e9
       with:
         distribution: 'dragonwell'
         java-version: ${{ matrix.java-version }}
