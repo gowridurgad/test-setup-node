@@ -1,15 +1,35 @@
-name: yarncache
+name: Node yarn cache
 
 on:
-   workflow_dispatch
+  workflow_dispatch:
+
 jobs:
   build:
-    runs-on: self-hosted
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+        
+          - os: "macos-14"
+            architecture: "x64"
+          - os: "macos-12"
+            architecture: "x64"
+    defaults:
+      run:
+        shell: bash
+    runs-on: ${{ matrix.target.os }}
+    
     steps:
       - uses: actions/checkout@v4
-          
-      - name: Use Node.js
+
+      - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: '20.15.1'
+          node-version: 20.x
           cache: 'yarn'
+
+      - name: Use node
+        run: |
+          node --version
+          yarn --version
+          yarn install
