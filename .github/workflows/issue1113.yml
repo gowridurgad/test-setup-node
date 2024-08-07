@@ -10,7 +10,7 @@ jobs:
       matrix:
         target:
         
-          - os: "macos-14"
+          - os: "macos-13"
             architecture: "x64"
           - os: "macos-12"
             architecture: "x64"
