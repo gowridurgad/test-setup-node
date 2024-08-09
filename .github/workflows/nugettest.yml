@@ -1,0 +1,26 @@
+name: Publish .NET Application
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+
+      - name: Publish with dotnet
+        run: dotnet publish --configuration Release --output ./output
+
+      - name: Publish to NuGet
+        run: dotnet nuget push ./output/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
