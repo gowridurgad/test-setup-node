@@ -25,7 +25,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ github.run_id }}-${{ github.run_number }}
+          key: node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ github.sha }}
           restore-keys: |
             node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}
             node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn
