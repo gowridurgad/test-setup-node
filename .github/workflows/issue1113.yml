@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup cache key
         id: cache-key
-        run: echo "CACHE_KEY=node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ github.run_id }}" >> $GITHUB_ENV
+        run: echo "CACHE_KEY=node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ github.run_id }}-${{ github.run_number }}" >> $GITHUB_ENV
 
       - name: Use node
         run: |
