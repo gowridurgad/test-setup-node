@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: 20.x
           cache: 'yarn'
-          cache-key: node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          cache-dependency-path: '**/yarn.lock'
 
       - name: Use node
         run: |
