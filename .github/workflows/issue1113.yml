@@ -1,42 +1,18 @@
-name: Node yarn cache
+name: node yaran cache
 
 on:
   workflow_dispatch:
-
+  
 jobs:
   build:
+    runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
       matrix:
-        target:
-          - os: "macos-13"
-            architecture: "x64"
-          - os: "macos-12"
-            architecture: "x64"
-    defaults:
-      run:
-        shell: bash
-    runs-on: ${{ matrix.target.os }}
-    
+        os : ['macos-12', 'macos-13']
     steps:
       - uses: actions/checkout@v4
-
-      - name: Cache node modules
-        uses: actions/cache@v4
+      - uses: gowridurgad/setup-java-fork@testing-snap
         with:
-          path: node_modules
-          key: node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ github.sha }}
-          restore-keys: |
-            node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn-${{ hashFiles('**/yarn.lock') }}
-            node-cache-${{ runner.os }}-${{ matrix.target.architecture }}-yarn
-
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-
-      - name: Install dependencies
-        run: |
-          node --version
-          yarn --version
-          yarn install
+          distribution: 'sapmachine'
+          node-versions : 20.x
+          cache: 'yarn'
