@@ -11,7 +11,7 @@ jobs:
         os : ['macos-12', 'macos-13']
     steps:
       - uses: actions/checkout@v4
-      - uses: gowridurgad/setup-java-fork@testing-snap
+      - uses: actions/setup-node@v4
         with:
           distribution: 'sapmachine'
           node-versions : 20.x
