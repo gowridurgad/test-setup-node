@@ -2,7 +2,7 @@ name: node yarn cache
 
 on:
   workflow_dispatch:
-
+  
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -11,18 +11,13 @@ jobs:
         os: ['macos-12', 'macos-13']
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
-
-      - name: Cache Yarn dependencies
-        id: cache-yarn
-        uses: actions/cache@v4
-        with:
-          key: yarn-cache-${{ runner.os }}-${{ matrix.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            yarn-cache-${{ runner.os }}-${{ matrix.os }}-
-
+          cache: 'yarn'
+          cache-dependency-path: '**/yarn.lock-${{ github.run_id }}'
+      
       - name: Use node
         run: |
           node --version
