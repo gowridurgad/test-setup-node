@@ -14,15 +14,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
-      - name: Cache Yarn Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Restore Yarn Cache
+        if: cache-hit != 'true'
+        run: |
+          mkdir -p ~/.cache/yarn
+          cp -R /path/to/cache ~/.cache/yarn
       - name: Use node
         run: |
           node --version
           yarn --version
           yarn install
+      - name: Save Yarn Cache
+        if: always()
+        run: |
+          mkdir -p /path/to/cache
+          cp -R ~/.cache/yarn /path/to/cache
