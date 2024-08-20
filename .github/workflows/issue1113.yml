@@ -14,10 +14,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          cache: 'yarn'
-          cache-dependency-path: '**/yarn.lock'
-          cache-key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}-${{ github.job }}
-
+      - name: Cache Yarn Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Use node
         run: |
           node --version
