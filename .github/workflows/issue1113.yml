@@ -15,14 +15,12 @@ jobs:
         with:
           node-version: 20.x
 
-      - name: Print Yarn cache directory
-        run: yarn cache dir
-
+    
       - name: Cache Yarn dependencies
         id: cache-yarn
         uses: actions/cache@v4
         with:
-          path: ~/.yarn/cache
+          path: /Users/runner/Library/Caches/Yarn/v6
           key: yarn-cache-${{ runner.os }}-${{ matrix.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             yarn-cache-${{ runner.os }}-${{ matrix.os }}-
