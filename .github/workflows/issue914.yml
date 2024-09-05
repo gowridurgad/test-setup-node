@@ -19,6 +19,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+      - name: Install dependencies
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y pkg-config libcairo2-dev
+       
       - name: Show environment variables
         run: env
       - name: Python package install
