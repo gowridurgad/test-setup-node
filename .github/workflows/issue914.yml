@@ -6,26 +6,20 @@ on:
   workflow_dispatch:    
   
     
-jobs:    
-  test-python:    
-    name: Test Python pip install    
-    runs-on: self-hosted
+jobs:
+  test-python:
+    name: Test Python pip install
+    runs-on: [self-hosted, linux, test-python]
     env:
       RUNNER_TOOL_CACHE: ${{ github.workspace }}/_work/_tool
       AGENT_TOOLSDIRECTORY: ${{ github.workspace }}/_work/_tool
-      
-    steps:    
-      - name: Github Actions Context Information    
-        uses: SiemaApplications-attic/vossloh-gh-actions/debug/show-github-context@v7    
-              
-      - uses: actions/setup-python@v5    
-        with:    
-          python-version: '3.10'    
-    
-      - name: show env    
-        run: |    
-          env    
-    
-      - name: python pkg install    
-        run: |    
-          pip install PyGObject
+    steps:
+      - name: Github Actions Context Information
+        uses: SiemaApplications-attic/vossloh-gh-actions/debug/show-github-context@v7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Show environment variables
+        run: env
+      - name: Python package install
+        run: pip install PyGObject
