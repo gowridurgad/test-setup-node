@@ -9,7 +9,11 @@ on:
 jobs:    
   test-python:    
     name: Test Python pip install    
-    runs-on: [self-hosted, linux, test-python]    
+    runs-on: [self-hosted, linux, test-python] 
+    env:
+      RUNNER_TOOL_CACHE: ${{ github.workspace }}/_work/_tool
+      AGENT_TOOLSDIRECTORY: ${{ github.workspace }}/_work/_tool
+      
     steps:    
       - name: Github Actions Context Information    
         uses: SiemaApplications-attic/vossloh-gh-actions/debug/show-github-context@v7    
