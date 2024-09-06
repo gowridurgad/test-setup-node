@@ -27,4 +27,4 @@ jobs:
       - name: Show environment variables
         run: env
       - name: Python package install
-        run: pip install PyGObject
+        run: pip install poetry
