@@ -10,9 +10,7 @@ jobs:
   test-python:
     name: Test Python pip install
     runs-on: self-hosted
-    env:
-      RUNNER_TOOL_CACHE: ${{ github.workspace }}/_work/_tool
-      AGENT_TOOLSDIRECTORY: ${{ github.workspace }}/_work/_tool
+    
     steps:
       - name: Github Actions Context Information
         uses: SiemaApplications-attic/vossloh-gh-actions/debug/show-github-context@v7
@@ -20,17 +18,8 @@ jobs:
         with:
           python-version: '3.10'
           
-      - name: Install GCC
-        run: sudo apt-get install -y gcc
-
-      - name: Install dependencies
-        run: sudo apt-get install libcairo2-dev pkg-config
-
-      - name: Install gobject-introspection and CMake
-        run: sudo apt-get install -y gobject-introspection cmake
-
        
       - name: Show environment variables
         run: env
       - name: Python package install
-        run: pip install PyGObject
+        run: pip install Poetry
