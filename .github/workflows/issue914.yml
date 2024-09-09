@@ -20,7 +20,7 @@ jobs:
         run: env
 
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y python3-dev libglib2.0-dev libcairo2-dev
+        run: sudo apt-get update && sudo apt-get install -y python3-dev libglib2.0-dev libcairo2-dev gobject-introspection libgirepository1.0-dev
 
       - name: Set CPATH environment variable
         run: echo "CPATH=$(pwd)/_work/_tool/Python/3.10.14/x64/include/python3.10" >> $GITHUB_ENV
