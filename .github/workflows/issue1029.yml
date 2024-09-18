@@ -1,11 +1,11 @@
-name: issue1029
+name: issue1029-prtesting
 on:
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
+      - uses: aparnajyothi-y/setup-node@db-alerts-fix
         with:
           node-version: 20
           cache: 'yarn'
