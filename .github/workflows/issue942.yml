@@ -7,15 +7,12 @@ jobs:
   test:
     runs-on: macos-latest
 
-    strategy:
-      matrix:
-        python-version: [3.9, 3.10.15, 3.11]
-
+    
     steps:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.10"
 
     - name: Install coveralls
       run: |
