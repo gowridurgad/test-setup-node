@@ -21,7 +21,7 @@ jobs:
       run: |
         pip install coveralls
         
-    - name: Run coveralls with login shell (fails)
+    - name: Run coveralls with login shell 
       shell: bash -l {0}
       run: 
         coveralls --version
