@@ -1,0 +1,17 @@
+name: issue1029-prtesting
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        node-version: [10.15, 16.15.1 , 18.4.0]
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-verison}}
+
+      - run: npm ci
+      - run: npm test
+          
