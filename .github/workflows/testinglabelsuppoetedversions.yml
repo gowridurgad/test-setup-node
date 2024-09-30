@@ -1,4 +1,4 @@
-name: issue1029-prtesting
+name: label1
 on:
   workflow_dispatch:
 jobs:
