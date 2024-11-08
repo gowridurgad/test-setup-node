@@ -6,12 +6,9 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Create .nvmrc file in the action directory
-      run: echo "14" > ${{ github.action_path }}/.nvmrc
-      shell: bash
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: gowridurgad/setup-node-fork@test-composite
       with:
         node-version-file: ${{ github.action_path }}/.nvmrc
-      shell: bash
+   
