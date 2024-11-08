@@ -8,4 +8,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Use composite action
-        uses: ./.github
+        uses: ./action.yml
