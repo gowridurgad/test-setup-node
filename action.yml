@@ -4,13 +4,11 @@ runs:
   using: 'composite'
   steps:
     - name: Resolve Node Version File Path
+      shell: bash
       run: echo "NODE_VERSION_FILE=$(realpath ${{ github.action_path }}/.nvmrc)" >> $GITHUB_ENV
     - name: Checkout code
       uses: actions/checkout@v4
-
-
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version-file: ${{ env.NODE_VERSION_FILE }}
-   
