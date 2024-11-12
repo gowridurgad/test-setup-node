@@ -10,5 +10,5 @@ runs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version-file: '.nvmrc'
+        node-version: '14.7.0'
    
