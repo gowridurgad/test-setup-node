@@ -3,6 +3,8 @@ description: 'A composite action to checkout code and set up Node.js'
 runs:
   using: 'composite'
   steps:
+    - name: Resolve Node Version File Path
+      run: echo "NODE_VERSION_FILE=$(realpath ${{ github.action_path }}/.nvmrc)" >> $GITHUB_ENV
     - name: Checkout code
       uses: actions/checkout@v4
 
@@ -10,5 +12,5 @@ runs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version-file: '.nvmrc'
+        node-version-file: ${{ env.NODE_VERSION_FILE }}
    
