@@ -12,6 +12,7 @@ runs:
      - name: Determine action path
        id: action_path
        run: echo "action_path=$(node -p 'require("path").relative(process.env.GITHUB_WORKSPACE, "${{ github.action_path }}")')" >> $GITHUB_ENV
+       shell: bash
      - name: Set up Node.js
        uses: actions/setup-node@v4
        with:
