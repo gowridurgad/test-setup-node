@@ -7,14 +7,12 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Read .nvmrc
-      run: echo "::set-output name=NVMRC::$(cat .nvmrc)"
-      id: nvm
-      shell: bash
-    
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+     - name: Checkout code
+       uses: actions/checkout@v4
+     - name: Determine action path
+       id: action_path
+       run: echo "action_path=$(node -p 'require("path").relative(process.env.GITHUB_WORKSPACE, "${{ github.action_path }}")')" >> $GITHUB_ENV
+     - name: Set up Node.js
+       uses: actions/setup-node@v4
+       with:
+          node-version-file: ${{ env.action_path }}/.nvmrc
