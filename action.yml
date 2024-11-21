@@ -14,6 +14,6 @@ runs:
       id: nvm
     
     - name: Setup Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
           node-version: '${{ steps.nvm.outputs.NVMRC }}'
