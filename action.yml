@@ -3,15 +3,10 @@ description: 'A composite action to checkout code and set up Node.js'
 runs:
   using: 'composite'
   steps:
-    - name: Checkout code
+     - name: Checkout code
       uses: actions/checkout@v4
     - name: Set up Node.js
-      run: |
-        node_version_file=$(node -p 'require("path").join(process.env.GITHUB_WORKSPACE, ".nvmrc")')
-        echo "node-version-file=${node_version_file}" >> $GITHUB_ENV
-      shell: bash
-    - name: Use Node.js
-      uses: actions/setup-node@v4
+      uses: gowridurgad/setup-node-fork@testing-aparnas-changes
       with:
-        node-version-file: ${{ env.node-version-file }}
-
+        node-version-file: ${{ github.workspace }}/.nvmrc
+   
