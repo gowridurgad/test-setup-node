@@ -1,12 +1,15 @@
 name: 'Composite Action Example'
 description: 'A composite action to checkout code and set up Node.js'
+inputs:
+  node-version-file:
+    description: 'Path to the Node version file'
+    required: true
 runs:
   using: 'composite'
   steps:
-     - name: Checkout code
-       uses: actions/checkout@v4
-     - name: Set up Node.js
-       uses: gowridurgad/setup-node-fork@resolve-path
-       with:
-         node-version-file: '.nvmrc'
-   
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: gowridurgad/setup-node-fork@resolve-path
+      with:
+        node-version-file: ${{ inputs.node-version-file }}
