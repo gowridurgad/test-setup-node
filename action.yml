@@ -8,5 +8,5 @@ runs:
      - name: Set up Node.js
        uses: gowridurgad/setup-node-fork@resolve-path
        with:
-         node-version-file: ${{ github.workspace}}/.nvmrc
+         node-version-file: '.nvmrc'
    
