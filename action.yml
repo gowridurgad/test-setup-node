@@ -6,6 +6,6 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Set up Node.js
-      uses: gowridurgad/setup-node-fork@absolute-path
+      uses: gowridurgad/setup-node-fork@testing-aparnas-chnages
       with:
         node-version-file: ${{ github.action_path }}/.nvmrc
