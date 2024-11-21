@@ -12,6 +12,7 @@ runs:
     - name: Read .nvmrc
       run: echo "::set-output name=NVMRC::$(cat .nvmrc)"
       id: nvm
+      shell: bash
     
     - name: Setup Node
       uses: actions/setup-node@v4
