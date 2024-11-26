@@ -1,10 +1,11 @@
-name: Build
+name: issue1162
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
+    environment: shared
     runs-on: [self-hosted]
     steps:
       - name: Setup Node.js
