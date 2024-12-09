@@ -29,7 +29,7 @@ jobs:
     - name: Publish to GPR
       run: npm publish
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.MY_GITHUB}}
 
     - name: Setup Node.js (npm registry)
       uses: actions/setup-node@v4
