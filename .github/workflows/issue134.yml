@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gowridurgad/setup-node@testing-134
+      - uses: gowridurgad/setup-node@gowri-36
         with:
           node-version: 16
           mirror-url : "https://nodejs.org/download/v8-canary/"
