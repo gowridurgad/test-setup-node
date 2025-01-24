@@ -13,5 +13,5 @@ jobs:
       - uses: gowridurgad/setup-node@gowri-36
         with:
           node-version: 18
-          mirror-url : "https://nodejs.org/download/release/v18.20.6/"
+          mirror-url : "https://nodejs.org/download/release/v16.20.2/"
     
