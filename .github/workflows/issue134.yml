@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: gowridurgad/setup-node@gowri-36
         with:
-          node-version: 16
-          mirror-url : "https://nodejs.org/download/v8-canary/"
+          node-version: 16.0.2
+          architecture: "arm64"
+          mirror-url : "https://nodejs.org/dist"
     
