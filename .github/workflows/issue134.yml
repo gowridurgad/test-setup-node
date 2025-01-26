@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: gowridurgad/setup-node@siva-devi
         with:
-          node-version: "17.0.0"
+          node-version: "21.0.0"
           mirror-url: "https://nodejs.org/dist/"
       - name: Print Node.js version
         run: node -v
