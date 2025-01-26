@@ -1,4 +1,4 @@
-name: PR134
+name: venkata
 
 on:
   
@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gowridurgad/setup-node@gowri-36
+      - uses: gowridurgad/setup-node@siva-devi
         with:
           node-version: 16
-          mirror-url : "https://nodejs.org/download/release/v16.20.2/"
+          mirror-url : "https://nodejs.org/dist/"
     
