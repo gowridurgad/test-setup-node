@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gowridurgad/setup-node@gowri-36
+      - uses: gowridurgad/setup-node@siva-devi
         with:
           node-version: "21.0.0"
           mirror-url: "https://nodejs.org/dist/"
