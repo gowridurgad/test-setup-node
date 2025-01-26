@@ -1,9 +1,7 @@
 name: venkata
 
 on:
-  
   workflow_dispatch:
-
 
 jobs:
   build:
@@ -13,5 +11,6 @@ jobs:
       - uses: gowridurgad/setup-node@siva-devi
         with:
           node-version: "16.0.0"
-          mirror-url : "https://nodejs.org/dist/"
-    
+          mirror-url: "https://nodejs.org/dist/"
+      - name: Print Node.js version
+        run: node -v
