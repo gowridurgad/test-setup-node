@@ -13,5 +13,5 @@ jobs:
       - uses: gowridurgad/setup-node@siva-devi
         with:
           node-version: 16
-          mirror-url : "https://nodejs.org/dist/v16.13.0/node-v16.13.0-linux-x64.tar.gz"
+          mirror-url : "https://nodejs.org/download/v8-canary/"
     
