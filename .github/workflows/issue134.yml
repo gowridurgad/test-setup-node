@@ -13,5 +13,5 @@ jobs:
       - uses: gowridurgad/setup-node@siva-devi
         with:
           node-version: 16
-          mirror-url : "node-v16.13.2-linux-armv7l.tar.xz"
+          mirror-url : "https://nodejs.org/dist/v16.13.0/node-v16.13.0-linux-x64.tar.gz"
     
