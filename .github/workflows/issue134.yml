@@ -12,5 +12,4 @@ jobs:
         with:
           node-version: "21.0.0"
           mirror-url: "https://nodejs.org/dist/"
-      - name: Print Node.js version
-        run: node -v
+     
