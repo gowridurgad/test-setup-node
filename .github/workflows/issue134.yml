@@ -11,7 +11,5 @@ jobs:
       - uses: gowridurgad/setup-node@siva-devi
         with:
           node-version: "21"
-          mirror-url: "https://nodejs.org/dist/"
-      - name: Print Node.js path
-        run: which node
+       
      
