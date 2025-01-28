@@ -1,0 +1,32 @@
+  name: Code Validation
+
+on:
+  workflow_call:
+
+env:
+  node_version: 20
+
+jobs:
+  tests:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.node_version }}
+        cache: 'yarn'
+
+    - uses: actions/cache@v4
+      id: npm-cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-${{ env.node_version }}-node-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: ${{ runner.os }}-${{ env.node_version }}-node-
+      
+    - name: Install    
+      if: steps.npm-cache.outputs.cache-hit != 'true'  
+      run: yarn
