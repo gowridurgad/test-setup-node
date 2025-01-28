@@ -1,7 +1,7 @@
 name: testing1206
 
 on:
-  workflow_call:
+  workflow_dispatch:
 
 env:
   node_version: 20
