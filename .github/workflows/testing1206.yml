@@ -26,7 +26,4 @@ jobs:
         path: node_modules
         key: ${{ runner.os }}-${{ env.node_version }}-node-${{ hashFiles('**/yarn.lock') }}
         restore-keys: ${{ runner.os }}-${{ env.node_version }}-node-
-      
-    - name: Install    
-      if: steps.npm-cache.outputs.cache-hit != 'true'  
-      run: yarn
+  
