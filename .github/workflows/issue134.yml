@@ -1,16 +1,22 @@
-name: PR-134v
+name: Test Setup Node with MirrorURL
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  setup-node:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest, macos-13]
     steps:
-      - uses: actions/checkout@v4
-      - uses: aparnajyothi-y/setup-node@add-mirror-url
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js with mirrorURL
+        uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
-          node-version: "21"
-          mirrorURL: "https://nodejs.org/dist/"
+          node-version: '19'
+          mirrorURL: 'https://nodejs.org/dist/'
      
      
