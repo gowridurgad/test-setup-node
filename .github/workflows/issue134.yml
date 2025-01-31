@@ -1,4 +1,4 @@
-name: Test Setup Node with MirrorURL
+name: MirrorURL testing
 
 on:
   workflow_dispatch:
