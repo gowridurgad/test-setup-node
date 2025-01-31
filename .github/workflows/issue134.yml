@@ -17,6 +17,6 @@ jobs:
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
           node-version: '20'
-          mirror-url : 'https://nodejs.org/dist/gowri'
+          mirror-url : 'https://test/test1'
      
      
