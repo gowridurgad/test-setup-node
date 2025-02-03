@@ -24,7 +24,7 @@ jobs:
       shell: bash
 
     - name: Add Node.js to PATH
-      run: echo "/custom/cache/node/node-v12.18.3-linux-x64/bin" >> $GITHUB_PATH
+      run: echo "$HOME/custom/cache/node/node-v12.18.3-linux-x64/bin" >> $GITHUB_PATH
 
     - name: Verify Node.js Version
       run: node -v
