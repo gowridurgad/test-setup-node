@@ -18,9 +18,9 @@ jobs:
 
     - name: Download Old Node.js Version
       run: |
-        mkdir -p /custom/cache/node
-        curl -o /custom/cache/node/node-v12.18.3-linux-x64.tar.xz https://nodejs.org/dist/v12.18.3/node-v12.18.3-linux-x64.tar.xz
-        tar -xf /custom/cache/node/node-v12.18.3-linux-x64.tar.xz -C /custom/cache/node
+        mkdir -p $HOME/custom/cache/node
+        curl -o $HOME/custom/cache/node/node-v12.18.3-linux-x64.tar.xz https://nodejs.org/dist/v12.18.3/node-v12.18.3-linux-x64.tar.xz
+        tar -xf $HOME/custom/cache/node/node-v12.18.3-linux-x64.tar.xz -C $HOME/custom/cache/node
       shell: bash
 
     - name: Add Node.js to PATH
