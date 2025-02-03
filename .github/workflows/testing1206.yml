@@ -1,22 +1,33 @@
-name: testing1206
+name: Insert Outdated Node.js Version
 
-on:
-  workflow_dispatch:
-
-
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  tests:
-    name: Test
+  setup-node:
     runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v4
 
-    - name: Use Node.js 
-      uses: actions/setup-node@v4
-      with:
-        node-version: '21'
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download Old Node.js Version
+      run: |
+        mkdir -p /custom/cache/node
+        curl -o /custom/cache/node/node-v12.18.3-linux-x64.tar.xz https://nodejs.org/dist/v12.18.3/node-v12.18.3-linux-x64.tar.xz
+        tar -xf /custom/cache/node/node-v12.18.3-linux-x64.tar.xz -C /custom/cache/node
+      shell: bash
+
+    - name: Add Node.js to PATH
+      run: echo "/custom/cache/node/node-v12.18.3-linux-x64/bin" >> $GITHUB_PATH
+
+    - name: Verify Node.js Version
+      run: node -v
         
 
     
