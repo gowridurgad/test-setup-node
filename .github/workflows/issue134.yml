@@ -16,5 +16,5 @@ jobs:
       - name: Set up Node.js with mirrorURL
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
-          node-version : '\lts*'
+          node-version : 'lts/*'
           mirror-url : 'https://nodejs.org/dist/'
