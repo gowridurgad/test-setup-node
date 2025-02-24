@@ -17,4 +17,4 @@ jobs:
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
           node-version : '20.0.0-v8-canary'
-          mirror-url : 'https://nodejs.org/download/nightly'
+          mirror-url : 'https://nodejs.org/download/v8-canary'
