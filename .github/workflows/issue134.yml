@@ -17,4 +17,4 @@ jobs:
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
           node-version-file: '.nvmrc'
-          mirror-url : 'https://nodejs.org/download/v8-canary'
+          mirror-url : 'https://nodejs.org/dist/'
