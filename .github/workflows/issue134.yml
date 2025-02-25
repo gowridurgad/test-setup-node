@@ -19,3 +19,4 @@ jobs:
         with:
           node-version : ${{  matrix.node-versions }}
           mirror-url : 'https://nodejs.org/dist/'
+          cache: 'npm'
