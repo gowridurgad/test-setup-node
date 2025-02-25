@@ -17,5 +17,5 @@ jobs:
       - name: Set up Node.js with mirrorURL
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
-          node-version : ${{ node-versions }}
+          node-version : ${{  matrix.node-versions }}
           mirror-url : 'https://nodejs.org/dist/'
