@@ -18,7 +18,7 @@ jobs:
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
           node-version : ${{  matrix.node-versions }}
-          mirror-url : 'https://nodejs.org/dist/test'
+          mirror-url : 'https://nodejs.org/test/testing'
          
      
           
