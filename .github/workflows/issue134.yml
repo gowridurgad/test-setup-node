@@ -9,16 +9,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest, macos-13]
-        node-versions: [20]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Node.js with mirrorURL
-        uses: aparnajyothi-y/setup-node@add-mirror-url
+        uses: actions/setup-node@v4
         with:
-          node-version : ${{  matrix.node-versions }}
-          mirror-url : 'https://nodejs.org/test/testing'
-         
-     
-          
+          node-version : 'v20.1.1-v8-canary20221103f7e2421e91'
+        
