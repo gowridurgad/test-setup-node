@@ -16,5 +16,5 @@ jobs:
       - name: Set up Node.js with mirrorURL
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
-          node-version : 'v20.1.1-v8-canary20221103f7e2421e91'
-          mirror-url : 'https://nodejs.org/download/v8-canary'
+          node-version : latest
+          mirror-url : 'https://nodejs.org/dist/'
