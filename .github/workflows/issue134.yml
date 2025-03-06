@@ -17,4 +17,4 @@ jobs:
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
           node-version: '20'
-          mirror-url : 'https://invalidurl.com'
+          mirror-url : 'https://invalid-url.com/node'
