@@ -1,3 +1,4 @@
+
 name: MirrorURL testing
 
 on:
@@ -16,5 +17,5 @@ jobs:
       - name: Set up Node.js with mirrorURL
         uses: aparnajyothi-y/setup-node@add-mirror-url
         with:
-          node-version: '20'
-          mirror-url : 'https://invalid-url.com/node'
+          node-version: '20.18.3'
+          mirror-url : 'https://nodejs.org/dist/'
