@@ -2,7 +2,7 @@
 
 # test
 
-v18.19
+# comment v18.19
 
 # Node.js v18.20 and v20.10 (and later) have a bug that causes Jest code
 # coverage to randomly fail.
