@@ -1,14 +1,16 @@
-name: issue1119
+name: issue-1119
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4.0.3
         with:
           node-version-file: .nvmrc
       - run: npm install
+      - run: npm test
