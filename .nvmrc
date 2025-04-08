@@ -1,1 +1,4 @@
-20.16.0 # This is an inline comment
+
+# This is a multi-line comment
+# explaining the version below
+20.16.0 
