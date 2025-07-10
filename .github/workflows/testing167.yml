@@ -1,0 +1,63 @@
+name: Testing167
+
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: .NET
+    runs-on: ubuntu-latest
+    env:
+      NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+      OUTPUT_PATH: output
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Cache NuGet
+      uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('Directory.Packages.props') }} #hash of project files
+        restore-keys: ${{ runner.os }}-nuget-
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build (Debug)
+      run: dotnet build --no-restore
+    - name: Test (Debug)
+      run: dotnet test --no-build --verbosity normal
+    - name: Build (Release)
+      run: dotnet build --configuration Release --no-restore
+    - name: Pack (Release)
+      run: dotnet pack --configuration Release --no-build --output ${{ env.OUTPUT_PATH }}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ github.event.repository.name }}.nupkg
+        path: ${{ env.OUTPUT_PATH }}/*.*nupkg
+
+  publish:
+    name: Publish to NuGet
+    if: ${{ github.event_name == 'release' }}
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY}}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+          source-url: https://api.nuget.org/v3/index.json
+      - name: Download Package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}.nupkg
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.nupkg"
+      - name: Publish to Nuget
+        run: 'dotnet nuget push "*.nupkg" --skip-duplicate'
