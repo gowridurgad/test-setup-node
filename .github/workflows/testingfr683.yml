@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       # - uses: stevelacey/setup-node@version-file-defaults
       - uses: actions/setup-python@v5
+      - name: Print Python version
+        run: python --version
        
        
           
