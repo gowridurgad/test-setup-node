@@ -11,7 +11,7 @@ jobs:
         os: ['ubuntu-latest']
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: stevelacey/setup-node@version-file-defaults
        
        
           
