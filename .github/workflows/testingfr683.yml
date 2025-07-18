@@ -11,6 +11,6 @@ jobs:
         os: ['ubuntu-latest']
     steps:
       - uses: actions/checkout@v4
-      # - uses: stevelacey/setup-node@version-file-defaults
-      - uses: actions/setup-node@v4
+      - uses: stevelacey/setup-node@version-file-defaults
+      # - uses: actions/setup-node@v4
        
