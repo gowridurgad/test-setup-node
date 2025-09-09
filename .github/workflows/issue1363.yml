@@ -1,0 +1,19 @@
+name: issue #1363
+on:
+  workflow_dispatch
+
+jobs:
+  Validate-Example-Taskfile:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22.19.0'
+
+      - name: Validate Taskfile.yml
+        # Also update src/BinaryInstallPlugin.php if changing version
+        run: |
+          curl -O https://raw.githubusercontent.com/go-task/task/v3.38.0/website/static/schema.json
+          npx ajv-cli validate -s schema.json -d scaffold/Taskfile.yml
