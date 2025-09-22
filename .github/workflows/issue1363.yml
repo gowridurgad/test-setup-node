@@ -7,7 +7,7 @@ jobs:
   Validate-Example-Taskfile:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       # - uses: priyagupta108/setup-node@enable-npm-cache-default
       - uses: priyagupta108/setup-node@enable-npm-cache-default
         with:
