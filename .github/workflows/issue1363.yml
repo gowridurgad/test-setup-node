@@ -11,7 +11,6 @@ jobs:
       - uses: priyagupta108/setup-node@enable-npm-cache-default
         with:
           node-version: '24'
-          cache: 'npm'
-      - run: npm install 
+        
 
    
