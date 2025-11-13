@@ -1,4 +1,4 @@
-name: testing-1305
+name: npm always-auth warning
 on: push
 
 jobs:
@@ -9,7 +9,8 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Install Node.js
-        uses: actions/setup-node@v6
+        # uses: actions/setup-node@v6
+        uses: priyagupta108/setup-node@remove-always-auth
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org/'
