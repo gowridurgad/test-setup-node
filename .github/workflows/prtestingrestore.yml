@@ -45,6 +45,8 @@ jobs:
         with:
           path: ${{ env.NODE_CACHE }}
           key: node-cache-${{ runner.os }}-${{ env.ARCH }}-npm-${{ hashFiles('**/package-lock.json', '**/npm-shrinkwrap.json') }}
+      - name: Clean npm cache
+        run: npm cache clean --force
       - name: Install dependencies
         run: npm ci
       - name: Build
