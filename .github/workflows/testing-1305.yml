@@ -1,5 +1,5 @@
 name: npm always-auth warning
-on: push
+
 
 jobs:
   repro:
