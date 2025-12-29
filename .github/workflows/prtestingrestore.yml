@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '21'
           package-manager-cache: true # IMPORTANT
-          cache : true
+         
       # Normalize arch
       - name: Normalize runner architecture
         shell: bash
