@@ -16,8 +16,7 @@ jobs:
       
       - name: Setup Node from mise.toml
         uses: gperdomor/setup-node@feature/mise-support
-        with:
-          node-version-file: 'mise.toml'
+        
       
       - name: Verify Node version
         run: |
