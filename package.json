@@ -1,7 +1,6 @@
 {
   "name": "@gowridurgad/testinggowri",
   "version": "1.0.0",
-   "packageManager": "npm",
   "description": "Your package description",
   "main": "index.js",
   "repository": "git://github.com/gowridurgad/test4.git",
