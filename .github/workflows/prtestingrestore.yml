@@ -92,9 +92,9 @@ jobs:
         shell: bash
         run: |
           if [ "$PACKAGE_MANAGER" = "pnpm" ]; then
-            pnpm run build
+            pnpm install
           elif [ "$PACKAGE_MANAGER" = "yarn" ]; then
-            yarn build
+            yarn yarn install --frozen-lockfile
           else
-            npm run build --if-present
+            npm install
           fi
