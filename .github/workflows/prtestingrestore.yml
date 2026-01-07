@@ -87,14 +87,4 @@ jobs:
           else
             npm ci
           fi
-      # Run build script if present
-      - name: Build
-        shell: bash
-        run: |
-          if [ "$PACKAGE_MANAGER" = "pnpm" ]; then
-            pnpm install
-          elif [ "$PACKAGE_MANAGER" = "yarn" ]; then
-            yarn yarn install --frozen-lockfile
-          else
-            npm install
-          fi
+     
