@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '21'
+          cache: pnpm
 
       # Setup pnpm only when pnpm-lock.yaml exists
       - name: Setup pnpm
