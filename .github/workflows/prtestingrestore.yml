@@ -39,6 +39,12 @@ jobs:
         shell: bash
         run: |
           echo "ARCH=$(echo '${{ runner.arch }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+      - name: Normalize runner architecture (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+            $arch = "${{ runner.arch }}".ToLower()
+            echo "ARCH=$arch" | Out-File $env:GITHUB_ENV -Append
 
       - name: Set package manager cache path
         shell: bash
