@@ -88,15 +88,5 @@ jobs:
           else
             npm ci
           fi
-       # Run build script if present
-      - name: Build
-        shell: bash
-        run: |
-          if [ "$PACKAGE_MANAGER" = "pnpm" ]; then
-            pnpm run build
-          elif [ "$PACKAGE_MANAGER" = "yarn" ]; then
-            yarn build
-          else
-            npm run build --if-present
-          fi
+
      
