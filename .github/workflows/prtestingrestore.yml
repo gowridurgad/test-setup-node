@@ -39,9 +39,9 @@ jobs:
         shell: bash
         run: |
              set -e
-              PACKAGE_MANAGER="npm"
-              CACHE_PATH="$(npm config get cache)"
-              LOCK_PATTERN="**/package-lock.json"
+              PACKAGE_MANAGER="pnpm"
+              CACHE_PATH="$(pnpm store path)"
+              LOCK_PATTERN="**/pnpm-lock.yaml"
     
               echo "PACKAGE_MANAGER=$PACKAGE_MANAGER" >> $GITHUB_ENV
               echo "NODE_CACHE=$CACHE_PATH" >> $GITHUB_ENV
@@ -54,7 +54,7 @@ jobs:
           key: node-cache-${{ runner.os }}-${{ env.ARCH }}-${{ env.PACKAGE_MANAGER }}-${{ hashFiles(env.LOCK_PATTERN) }}
 
       - name: Install dependencies
-        run: npm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
     
            
                            
