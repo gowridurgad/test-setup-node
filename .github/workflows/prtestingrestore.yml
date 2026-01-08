@@ -39,9 +39,9 @@ jobs:
         shell: bash
         run: |
              set -e
-              PACKAGE_MANAGER="yarn"
-              CACHE_PATH="$(yarn cache dir)"
-              LOCK_PATTERN="**/yarn.lock"
+              PACKAGE_MANAGER="npm"
+              CACHE_PATH="$(npm config get cache)"
+              LOCK_PATTERN="**/package-lock.json"
     
               echo "PACKAGE_MANAGER=$PACKAGE_MANAGER" >> $GITHUB_ENV
               echo "NODE_CACHE=$CACHE_PATH" >> $GITHUB_ENV
@@ -54,7 +54,7 @@ jobs:
           key: node-cache-${{ runner.os }}-${{ env.ARCH }}-${{ env.PACKAGE_MANAGER }}-${{ hashFiles(env.LOCK_PATTERN) }}
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install --frozen-lockfile
     
            
                            
