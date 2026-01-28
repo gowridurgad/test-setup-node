@@ -10,10 +10,6 @@ jobs:
            os: [windows-latest, macos-latest, ubuntu-latest]
    steps:
       - uses: actions/checkout@v5
-
-      -  uses: pnpm/action-setup@v4
-         with:
-            version: 10
       
       - name: setup node
         uses: echelonka/setup-node@feat/print-pnpm-in-env-details-output
