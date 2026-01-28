@@ -13,8 +13,8 @@ jobs:
         with:
           node-version: '20.0.0'
           node-version-file: ''
-        env:
-          NODE_MIRROR: 'https://nonexistent-mirror.example.com'  # This will 404
+          mirror: 'https://nonexistent-mirror.example.com'
+
 
 
 # name: Testing#1378
