@@ -1,0 +1,28 @@
+name: Test mise.toml
+
+on:
+  workflow_dispatch:
+  
+
+jobs:
+  test-mise-toml:
+    name: Test mise.toml Support
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      
+     
+      
+      - name: Setup Node 
+        uses: trivikr/setup-node@remove-uuid
+        with:
+             node-version: 24
+
+      - name: Use node
+        run: |
+          node --version
+
+             
+        
+      
