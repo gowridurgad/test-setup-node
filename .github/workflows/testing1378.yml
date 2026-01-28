@@ -1,4 +1,4 @@
-name: Test mise.toml
+name: Testing#1378
 
 on:
   workflow_dispatch:
