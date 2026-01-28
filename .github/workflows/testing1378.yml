@@ -6,14 +6,13 @@ jobs:
   test-windows-fallback:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       
-      - name: Test with non-existent mirror (force 404 fallback)
-        uses: trivikr/setup-node@remove-uuid
+      - name: setup node
+        uses: echelonka/setup-node@feat/print-pnpm-in-env-details-output
         with:
           node-version: '20.0.0'
-          node-version-file: ''
-          mirror: 'https://nonexistent-mirror.example.com'
+         
 
 
 
