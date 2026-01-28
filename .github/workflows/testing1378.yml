@@ -1,28 +1,46 @@
 name: Testing#1378
 
-on:
-  workflow_dispatch:
-  
+on: workflow_dispatch
 
 jobs:
-  test-mise-toml:
-    name: Test mise.toml Support
-    runs-on: ubuntu-latest
+  test-windows-fallback:
+    runs-on: windows-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
+      - uses: actions/checkout@v4
+      
+      - name: Test with non-existent mirror (force 404 fallback)
+        uses: trivikr/setup-node@remove-uuid
+        with:
+          node-version: '20.0.0'
+          node-version-file: ''
+        env:
+          NODE_MIRROR: 'https://nonexistent-mirror.example.com'  # This will 404
+
+
+# name: Testing#1378
+
+# on:
+#   workflow_dispatch:
+  
+
+# jobs:
+#   test-mise-toml:
+#     name: Test mise.toml Support
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v5
       
      
       
-      - name: Setup Node 
-        uses: trivikr/setup-node@remove-uuid
-        with:
-             node-version: 24
+#       - name: Setup Node 
+#         uses: trivikr/setup-node@remove-uuid
+#         with:
+#              node-version: 24
 
-      - name: Use node
-        run: |
-          node --version
+#       - name: Use node
+#         run: |
+#           node --version
 
              
-        
       
