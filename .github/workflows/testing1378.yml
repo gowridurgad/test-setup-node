@@ -1,4 +1,4 @@
-name: Testing#1378
+name: Testing#1429
 
 on: workflow_dispatch
 
@@ -7,39 +7,17 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v5
+
+      -  uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
       
       - name: setup node
         uses: echelonka/setup-node@feat/print-pnpm-in-env-details-output
         with:
-          node-version: '20.0.0'
+          node-version: 24
          
 
 
 
-# name: Testing#1378
-
-# on:
-#   workflow_dispatch:
-  
-
-# jobs:
-#   test-mise-toml:
-#     name: Test mise.toml Support
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v5
-      
-     
-      
-#       - name: Setup Node 
-#         uses: trivikr/setup-node@remove-uuid
-#         with:
-#              node-version: 24
-
-#       - name: Use node
-#         run: |
-#           node --version
-
-             
-      
