@@ -10,9 +10,16 @@ jobs:
            os: [ubuntu-24.04-arm, windows-11-arm]
    steps:
       - uses: actions/checkout@v5
+
+      -  uses: pnpm/action-setup@v6
+         with:
+            version: 10
       
       - name: setup node
         uses: echelonka/setup-node@feat/print-pnpm-in-env-details-output
         with:
           node-version: 24
+          cache: pnpm
+
+      - run: pnpm install
          
