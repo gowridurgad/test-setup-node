@@ -10,20 +10,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
- 
- {
   "engines": {
     "node": "^19"
   },
   "devEngines": {
     "runtime": {
-      "name": "node",
-      "version": "^20"
+      "node": {
+        "version": "^20"
+      }
     }
-  }
-}
- 
-    
+  },
+
   "bugs": {
     "url": "https://github.com/gowridurgad/test4/issues"
   },
