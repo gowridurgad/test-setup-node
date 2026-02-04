@@ -9,6 +9,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
+  "engines": {
+    "node": ">=18"
+  },
+
+  // new development/runtime pins npm 11 understands
+  "devEngines": {
+    "runtime": {
+      "node": {
+        "version": "20.11.1",
+        "range": "20.11.x"
+      }
+    }
+  },
  
     
   "bugs": {
