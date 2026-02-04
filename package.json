@@ -13,13 +13,19 @@
   "engines": {
     "node": "^19"
   },
-  "devEngines": {
-    "runtime": {
-      "node": {
-        "version": "^20"
-      }
-    }
-  },
+
+"devEngines": {
+  "runtime": [
+    { "name": "node", "version": "^20" }
+  ]
+}
+
+"devEngines": {
+  "runtime": {
+    "name": "node",
+    "version": "^20"
+  }
+}
 
   "bugs": {
     "url": "https://github.com/gowridurgad/test4/issues"
