@@ -14,7 +14,7 @@
     "node": ">=18"
   },
 
-  // new development/runtime pins npm 11 understands
+ 
   "devEngines": {
     "runtime": {
       "node": {
