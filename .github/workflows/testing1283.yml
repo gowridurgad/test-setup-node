@@ -14,7 +14,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v5
     - name: Set up Node.js 
-      uses: susnux/setup-node@feat/support-dev-engines
+      # uses: susnux/setup-node@feat/support-dev-engines
+      uses: actions/setup-node@v6
       with:
         node-version-file: 'package.json'
       
