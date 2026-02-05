@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup-node:
-    runs-on: ubuntu-latest
+  dotnet-install-matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest, macos-13]
 
     steps:
     - name: Checkout repository
