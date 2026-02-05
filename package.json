@@ -16,7 +16,7 @@
 "devEngines": {
   "runtime": {
     "name": "node",
-    "version": "24.0.0-nightly"
+    "version": "24.0.0-nightly202505066102159fa1"
   }
 },
 
