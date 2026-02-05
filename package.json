@@ -16,7 +16,7 @@
 "devEngines": {
   "runtime": {
     "name": "node",
-    "version": "lts/*"
+    "version": "latest"
   }
 },
 
