@@ -10,9 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
-  "engines": {
-    "node": "^19"
-  },
+ 
 
 
 "devEngines": {
@@ -22,9 +20,7 @@
   }
 },
 
-   "volta": {
-    "node": "22"
-  },
+  
 
 
   "bugs": {
