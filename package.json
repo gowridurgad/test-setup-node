@@ -11,6 +11,10 @@
   },
 
  
+ "engines": {
+    "node": "^19"
+  },
+
 
 
 "devEngines": {
