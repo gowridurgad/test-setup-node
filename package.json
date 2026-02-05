@@ -16,7 +16,7 @@
 "devEngines": {
   "runtime": {
     "name": "node",
-    "version": "24-v8-canary"
+    "version": "v24.0.0-v8-canary2025030537242e55ac"
   }
 },
 
