@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  dotnet-install-matrix:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
