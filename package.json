@@ -14,7 +14,7 @@
 "dependencies": {
      "jest": "^29.6.1",
     "webpack": "^6.0.0",
-    "babel-core": "^8.0.0",
+    "babel-core": "^8.0.0"
   },
   "engines": {
     "node": "20"
