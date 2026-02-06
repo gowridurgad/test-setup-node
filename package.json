@@ -12,16 +12,19 @@
 
 
 "dependencies": {
-    "axios": "^1.7.7",
-    "lodash": "^4.17.21"
+    "express": "^5.1.0",
+    "mongoose": "^7.0.0"
   },
-
-"devEngines": {
-  "runtime": {
-    "name": "node",
-    "version": "8.17.0"
+  "engines": {
+    "node": "20"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "6.17.1"
+    }
   }
-},
+}
 
   "bugs": {
     "url": "https://github.com/gowridurgad/test4/issues"
