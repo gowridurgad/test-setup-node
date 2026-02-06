@@ -5,11 +5,11 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
-    # runs-on: ${{ matrix.os }}
-    # strategy:
-    #   matrix:
-    #     os: [ ubuntu-24.04-arm, windows-11-arm]
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
 
     steps:
     - name: Checkout repository
@@ -19,7 +19,12 @@ jobs:
       # uses: actions/setup-node@v6
       with:
         node-version-file: 'package.json'
+        registry-url: 'https://npm.pkg.github.com'
             
 
     - name: Verify Latest Node.js Version
       run: node -v
+
+    - run: npm publish
+      env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
