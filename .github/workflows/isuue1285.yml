@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: self-hosted
     env:
-      PIP_REQUIRE_VIRTUALENV: "0" 
+      PIP_REQUIRE_VIRTUALENV: "1" 
     steps:
     - uses: actions/checkout@v5
     - uses: actions/setup-python@v6
