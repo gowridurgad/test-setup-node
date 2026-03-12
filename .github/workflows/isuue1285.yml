@@ -6,7 +6,6 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v5
-      run: pipx install poetry
     - uses: actions/setup-python@v6
       with:
         python-version: '3.11'
