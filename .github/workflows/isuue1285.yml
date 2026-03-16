@@ -11,17 +11,15 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+          cache: pip
 
       - name: Install deps (requires venv)
-        env:
-          PIP_REQUIRE_VIRTUALENV: "1"
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          pip install -r requirements.txt
-        # run: |
-        #    python -m venv .venv
-        #    source .venv/bin/activate
-        #     pip install -r requirements.txt
         # env:
-        #      PIP_REQUIRE_VIRTUALENV: 1
+        #   PIP_REQUIRE_VIRTUALENV: "1"
+        # run: |
+        #   python -m venv .venv
+        #   source .venv/bin/activate
+        #   pip install -r requirements.txt
+        run: pip install -r requirements.txt
+        env:
+             PIP_REQUIRE_VIRTUALENV: 1
