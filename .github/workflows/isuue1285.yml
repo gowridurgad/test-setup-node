@@ -1,15 +1,21 @@
 name: testing1285
 on:
   workflow_dispatch:
+
 jobs:
   build:
-    runs-on: ubuntu-latest
-    env:
-      PIP_REQUIRE_VIRTUALENV: "1" 
+    runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v5
-    - uses: actions/setup-python@v6
-      with:
-        python-version: '3.13.8'
+      - uses: actions/checkout@v5
 
-    
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install deps (requires venv)
+        env:
+          PIP_REQUIRE_VIRTUALENV: "1"
+        run: |
+          python -m venv .venv
+          . .venv/bin/activate
+          pip install -r requirements.txt
