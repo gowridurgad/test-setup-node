@@ -8,15 +8,12 @@
   "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    "publishConfig": {
-    "access": "public"
-  }
   },
-
-
-"dependencies": {
-     "jest": "^29.6.1"
-  
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "jest": "^29.6.1"
   },
   "engines": {
     "node": "20"
@@ -27,8 +24,6 @@
       "version": "24"
     }
   },
-
-
   "bugs": {
     "url": "https://github.com/gowridurgad/test4/issues"
   },
