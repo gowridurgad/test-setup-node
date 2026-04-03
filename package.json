@@ -1,6 +1,6 @@
 {
-  "name": "devitesting48",
-  "version": "1.0.4",
+  "name": "devitesting48-unique-xyz",
+  "version": "1.0.5",
   "description": "Your package description",
   "main": "index.js",
   "repository": "git://github.com/gowridurgad/test4.git",
@@ -15,9 +15,7 @@
   "dependencies": {
     "jest": "^29.6.1"
   },
-  "engines": {
-    "node": "20"
-  },
+ 
   "devEngines": {
     "runtime": {
       "name": "node",
