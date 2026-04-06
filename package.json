@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "description": "Your package description",
   "main": "index.js",
-  "repository": "git://github.com/gowridurgad/test4.git",
+  "repository": "github:gowridurgad/test-setup-node",
   "author": "gowridurgad",
   "license": "ISC",
   "scripts": {
@@ -21,9 +21,4 @@
       "name": "node",
       "version": "24"
     }
-  },
-  "bugs": {
-    "url": "https://github.com/gowridurgad/test4/issues"
-  },
-  "homepage": "https://github.com/gowridurgad/test4#readme"
-}
+  }
