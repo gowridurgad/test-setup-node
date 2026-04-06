@@ -17,4 +17,18 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
-      - run: npm publish 
+      # Debug: confirm versions and whether a token is being set/exported
+      - name: Debug npm OIDC vs token env
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Node: $(node -v)"
+          echo "npm:  $(npm -v)"
+          echo "registry: $(npm config get registry)"
+          echo "NODE_AUTH_TOKEN is: '${NODE_AUTH_TOKEN-<unset>}'"
+          echo "Relevant env vars:"
+          env | grep -E 'NODE_AUTH_TOKEN|ACTIONS_ID_TOKEN|ACTIONS_ID_TOKEN_REQUEST' || true
+          echo "npm whoami (may fail if not authenticated yet):"
+          npm whoami || true
+
+      - run: npm publish
