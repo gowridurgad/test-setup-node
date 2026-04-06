@@ -15,10 +15,10 @@
   "dependencies": {
     "jest": "^29.6.1"
   },
- 
   "devEngines": {
     "runtime": {
       "name": "node",
       "version": "24"
     }
   }
+}
