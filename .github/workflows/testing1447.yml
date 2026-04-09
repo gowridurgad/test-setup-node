@@ -14,8 +14,10 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-          token: ""
+         
 
-      - run: npm publish
+      - run: >
+           unset NODE_AUTH_TOKEN &&
+           npm publish
