@@ -1,5 +1,5 @@
 {
-  "name": "@gowri48/testing144712",
+  "name": "@gowri48/testing144714",
   "version": "1.0.9",
   "description": "Your package description",
   "main": "index.js",
@@ -18,7 +18,7 @@
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "22"
+      "version": "20"
     }
   }
 }
