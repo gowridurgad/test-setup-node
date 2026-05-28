@@ -28,5 +28,6 @@ jobs:
       with:
         node-version: 'lts/*'
         mirror: 'https://mirror.yandex.ru/mirrors/nodejs.org/'
+        mirror-token: ${{ secrets.TOKEN_GITHUB }}
         
     
