@@ -1,0 +1,14 @@
+name: repro setup-node mirror auth drop
+
+on:
+  workflow_dispatch:
+
+jobs:
+  repro:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node with mirror but no mirror-token
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          mirror: "https://example.invalid/mirror"
