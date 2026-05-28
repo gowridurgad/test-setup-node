@@ -1,15 +1,31 @@
-name: repro setup-node mirror auth drop
+name: Test restore cache
 
 on:
+  
   workflow_dispatch:
-
 jobs:
-  repro:
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest','macos-latest','windows-latest', 'ubuntu-24.04-arm', 'windows-11-arm', 'macos-15-intel']
+    runs-on: ${{ matrix.os }}
+   
     steps:
-      - name: Setup Node with mirror but no mirror-token
-        uses: actions/setup-node@v6
-        with:
-          node-version: "26"
-          check-latest: true
-          mirror: "https://example.invalid/mirror"
+    - name: Checkout repository
+      uses: actions/checkout@v6
+  
+    - name: Exhaust unauthenticated rate limit
+      shell: bash
+      run: |
+        for i in $(seq 1 65); do
+          curl -s -o /dev/null -w "%{http_code} " https://api.github.com/repos/actions/node-versions/releases
+        done
+        echo ""
+        echo "Rate limit status:"
+        curl -s https://api.github.com/rate_limit | jq '.rate'
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 'lts/*'
+        mirror: 'https://mirror.yandex.ru/mirrors/nodejs.org/'
+    
