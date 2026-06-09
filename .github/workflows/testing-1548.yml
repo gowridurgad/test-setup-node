@@ -26,5 +26,5 @@ jobs:
         curl -s https://api.github.com/rate_limit | jq '.rate'
     - uses: actions/setup-node@v6
       with:
-        node-version: '26'
+        node-version: '24'
         mirror: 'https://mirror.yandex.ru/mirrors/nodejs.org/'
