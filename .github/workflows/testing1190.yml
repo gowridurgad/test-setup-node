@@ -20,7 +20,8 @@ jobs:
 
      
       - name: Setup Node 
-        uses: actions/setup-node@v6
+        # uses: actions/setup-node@v6  
+        uses: alexdunae/setup-node@main
         with:
           node-version: 24
           cache: npm
