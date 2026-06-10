@@ -28,10 +28,10 @@ jobs:
           node-version: 24
           cache: npm
 
-      # - name: Print outputs
-      #   run: |
-      #     echo "cache-hit=${{ steps.setup-node.outputs.cache-hit }}"
-      #     echo "cache-key=${{ steps.setup-node.outputs.cache-key }}"
+      - name: Print outputs
+        run: |
+          echo "cache-hit=${{ steps.setup-node.outputs.cache-hit }}"
+          echo "cache-key=${{ steps.setup-node.outputs.cache-key }}"
 
       - name: Install deps
         run: npm install
