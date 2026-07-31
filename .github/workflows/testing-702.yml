@@ -1,0 +1,150 @@
+name: Smoke test — cache-invalidate-after-days
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  # 1. Default (no input) → falls back to 120-day rolling prefix
+  default-invalidation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Create minimal npm project
+        run: |
+          cat > package.json <<'EOF'
+          { "name": "smoke", "version": "1.0.0", "dependencies": { "lodash": "^4" } }
+          EOF
+          npm install --package-lock-only
+      - uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Show cache primary key
+        run: echo "primary key was set (see setup-node logs above)"
+
+  # 2. Explicit "0" → invalidation deactivated (timedPrefix = 0)
+  disabled-invalidation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Create minimal npm project
+        run: |
+          cat > package.json <<'EOF'
+          { "name": "smoke", "version": "1.0.0", "dependencies": { "lodash": "^4" } }
+          EOF
+          npm install --package-lock-only
+      - uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-invalidate-after-days: '0'
+
+  # 3. Custom short window (1 day) → different rolling prefix than default
+  custom-invalidation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Create minimal npm project
+        run: |
+          cat > package.json <<'EOF'
+          { "name": "smoke", "version": "1.0.0", "dependencies": { "lodash": "^4" } }
+          EOF
+          npm install --package-lock-only
+      - uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-invalidate-after-days: '1'
+
+  # 4. Cache-hit second run — save, then restore, and verify hit
+  cache-hit-flow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Create minimal npm project
+        run: |
+          cat > package.json <<'EOF'
+          { "name": "smoke", "version": "1.0.0", "dependencies": { "lodash": "^4" } }
+          EOF
+          npm install --package-lock-only
+
+      # First setup — should be a cache miss; then install to populate cache
+      - id: first
+        uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-invalidate-after-days: '30'
+      - run: npm ci
+
+      # Second setup in same job — should reuse (same primary key)
+      - id: second
+        uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-invalidate-after-days: '30'
+
+      - name: Verify cache-hit output
+        run: |
+          echo "first cache-hit=${{ steps.first.outputs.cache-hit }}"
+          echo "second cache-hit=${{ steps.second.outputs.cache-hit }}"
+
+  # 5. Restore-key fallback — different lockfile hash, same rolling prefix
+  restore-key-fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Round 1 — seed the cache with lockfile A
+      - name: Seed cache (lockfile A)
+        run: |
+          cat > package.json <<'EOF'
+          { "name": "smoke", "version": "1.0.0", "dependencies": { "lodash": "^4.17.20" } }
+          EOF
+          npm install --package-lock-only
+      - uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-invalidate-after-days: '30'
+      - run: npm ci
+
+      # Round 2 — change the lockfile → different fileHash, same keyPrefix
+      # Expect: primary key MISS, restore-key HIT via `${keyPrefix}-` fallback
+      - name: Change dependency (lockfile B)
+        run: |
+          cat > package.json <<'EOF'
+          { "name": "smoke", "version": "1.0.0", "dependencies": { "lodash": "^4.17.21" } }
+          EOF
+          rm -f package-lock.json
+          npm install --package-lock-only
+      - id: fallback
+        uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-invalidate-after-days: '30'
+      - name: Verify fallback behavior
+        run: |
+          echo "cache-hit (should be false): ${{ steps.fallback.outputs.cache-hit }}"
+          echo "cache-matched-key (should be the rolling-prefix key, not empty):"
+          echo "${{ steps.fallback.outputs.cache-matched-key }}"
+
+  # 6. Negative — invalid input falls back to default 120
+  invalid-input-fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          cat > package.json <<'EOF'
+          { "name": "smoke", "version": "1.0.0", "dependencies": { "lodash": "^4" } }
+          EOF
+          npm install --package-lock-only
+      - uses: gowridurgad/setup-node@testing-702
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-invalidate-after-days: 'not-a-number'
+      - name: Note
+        run: echo "Should have parsed as NaN → fell back to 120 (see setup-node debug log for primary key)"
